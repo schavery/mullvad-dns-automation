@@ -10,7 +10,7 @@ if ! command -v mullvad &> /dev/null; then
 fi
 
 # Get current SSID
-current_ssid=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}')
+current_ssid=$(networksetup -getairportnetwork en0 | awk -F": " '{print $2}')
 
 # Set DNS based on current network
 if [ "$current_ssid" == "$HOME_SSID" ]; then
