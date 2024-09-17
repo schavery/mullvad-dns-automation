@@ -1,30 +1,42 @@
 # Mullvad DNS Switcher
 
-Automatically switches Mullvad VPN DNS settings based on your network.
+Automatically switches Mullvad VPN DNS settings based on your 
+network using `mullvad` cli.
 
-## Quick Install
+## Requirements
 
-1. Save `mullvad_dns_switcher.sh` to `/Users/yourusername/scripts/`
+- macOS
+- Mullvad VPN client installed
+
+## Installation
+
+1. Edit script:
+   - Open `mullvad_dns_switcher.bash`
+   - Set `HOME_SSID` and `HOME_DNS`
+
+1. Edit plist:
+   - Replace path to the bash script
+
+1. Move plist to launch agents::
    ```
-   chmod +x /Users/yourusername/scripts/mullvad_dns_switcher.sh
+   cp com.stevenavery.mullvaddnsswitcher ~/Library/LaunchAgents
    ```
 
-2. Edit script: Set `HOME_SSID` and `HOME_DNS`
-
-3. Save `com.yourusername.mullvaddnsswitcher.plist` to `/Users/yourusername/Library/LaunchAgents/`
-
-4. Load:
+1. Load launchd job:
    ```
-   launchctl load /Users/yourusername/Library/LaunchAgents/com.yourusername.mullvaddnsswitcher.plist
+   launchctl load ~/Library/LaunchAgents/com.stevenavery.mullvaddnsswitcher.plist
    ```
 
 ## Uninstall
 
 ```
-launchctl unload /Users/yourusername/Library/LaunchAgents/com.yourusername.mullvaddnsswitcher.plist
-rm /Users/yourusername/Library/LaunchAgents/com.yourusername.mullvaddnsswitcher.plist
-rm /Users/yourusername/scripts/mullvad_dns_switcher.sh
+launchctl unload ~/Library/LaunchAgents/com.stevenavery.mullvaddnsswitcher.plist
+rm ~/Library/LaunchAgents/com.stevenavery.mullvaddnsswitcher.plist
 ```
 
-Replace `yourusername` with your macOS username.
+## Troubleshooting
 
+Check logs:
+```
+tail -f /tmp/mullvaddnsswitcher.log
+```
