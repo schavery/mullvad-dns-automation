@@ -6,8 +6,11 @@
     <string>com.stevenavery.mullvaddnsswitcher</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/PATH/TO/YOUR/mullvad_dns_switcher.bash</string>
-    </array>
+            <string>/bin/bash</string>
+            <string>-l</string>
+            <string>-c</string>
+            <string>/PATH/TO/YOUR/mullvad-dns-automation/mullvad_dns_switcher.sh</string>
+        </array>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>

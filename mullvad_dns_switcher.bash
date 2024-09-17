@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Extend PATH to include common locations for Mullvad
+export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
+
 HOME_SSID="Your_Home_SSID"
 HOME_DNS="Your_Home_DNS_IP"
 
