@@ -8,7 +8,7 @@ HOME_DNS="Your_Home_DNS_IP"
 
 # Function to get current SSID
 get_ssid() {
-    /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}'
+    networksetup -getairportnetwork en0 | awk -F": " '{print $2}'
 }
 
 # Function to get current IPv4 address
